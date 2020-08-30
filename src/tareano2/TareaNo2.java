@@ -74,14 +74,23 @@ public class TareaNo2 {
         Scanner num = new Scanner(System.in);
         
         int verify_carnet;
-        
+        int quien;
         Estudiantes reco_carne = new Estudiantes();
         
         System.out.print("Ingrese el carnet del estudiante: ");
-        verify_carnet = num.nextInt();
-        reco_carne.LeerCarnet(estudiante, verify_carnet);
+        verify_carnet =Integer.parseInt(num.nextLine());
+        quien = reco_carne.BuscarEstudiante(estudiante, verify_carnet,cuan);
         
-                
+        String nombre= null;
+        int nota1 = 0;
+        System.out.println("-------------------------");
+        System.out.println("Nuevo Nombre: ");                                   //Encontrada la pocion se le notifica el nuevo nombre y nota
+        nombre= num.nextLine();
+        System.out.println("-------------------------");
+        System.out.println("Nueva Nota: ");
+        nota1= Integer.parseInt(num.nextLine());
+        estudiante[quien].setNombre(nombre);
+        estudiante[quien].setNota(nota1);           
     }
     
     public static void Eliminar(){

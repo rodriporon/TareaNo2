@@ -96,23 +96,18 @@ public class Estudiantes {
         
     }
     
-    public void BuscarEstudiante(Estudiantes[] estudiante, int carnet){
-        
-        int posicion = 0;
-        int verify_carnet;
-        for (int i = 0; i < 2; i++) {
-            verify_carnet = estudiante[i].getCarnet();
-            if (verify_carnet == carnet) {
-                posicion = i;
-                
+    public int BuscarEstudiante(Estudiantes[] estudiante, int carnet,int c){
+       int pos =0;
+        for (int i = 0 ;i<c; i++){                                                      
+            if(estudiante[i].getCarnet()==carnet){                                      //busqueda en posiciones para poder inmprimir posicion
+                System.out.println("Registro encontrado!");
+                pos=i;
             }
-            
         }
-        for (int i = posicion; i < 1; i++) {
-            estudiante[i] = estudiante[i+1];
+        if(pos==-1){
+                System.out.println("No hay Registro");
         }
-        System.out.println("Registro eliminado");
-        posicion--;
+        return pos;
         
     }
     
