@@ -7,7 +7,7 @@ public class TareaNo2 {
     public static String nombre;
     public static int carnet;
     public static int nota;
-    
+    public static int cuan=0;
 
     public static void main(String[] args) {
         
@@ -65,11 +65,11 @@ public class TareaNo2 {
             nota = sc.nextInt();
             
             estudiante[i] = new Estudiantes(nombre,carnet,nota);
+            cuan++;
         }
         //reco_estudiante.LeerNombres(estudiante);
         
     }
-    
     public static void Modificar(){
         Scanner num = new Scanner(System.in);
         
@@ -92,8 +92,13 @@ public class TareaNo2 {
         Estudiantes eliminar_estudiante = new Estudiantes();
         System.out.print("Ingrese el carnet a eliminar: ");
         verify_carnet = num.nextInt();
-        eliminar_estudiante.BuscarEstudiante(estudiante, verify_carnet);
-        eliminar_estudiante.LeerNombres(estudiante);        
+        eliminar_estudiante.EliminarEstudiante(estudiante,verify_carnet,cuan);
     }
+    /*public static void Ver(){    Solo queria saver que datos gurdavas
+
+        for (int i=0;i<cuan;i++){
+            System.out.println(estudiante[i].toString());
+        }
+    }*/
 
 }
