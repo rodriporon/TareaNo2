@@ -36,8 +36,7 @@ public class TareaNo2 {
                     }else{
                         System.out.println("Espacio agotado");
                     }
-                       
-                    
+                        
                     break;
                 case 2:
                     System.out.println("MODIFICAR DATOS");
@@ -109,7 +108,7 @@ public class TareaNo2 {
         for (int i = encontrado; i < cuan; i++) {
             estudiante[i] = estudiante[i+1];
         }                                                                      // la posicion por los datos anteriro (reinscripcion y eliminacion de un espacio
-        System.out.println("Registro eliminado!"); 
+        System.out.println("Registro eliminado"); 
         cuan--;
     }
     private static int buscarAlumno(int carnet) {
