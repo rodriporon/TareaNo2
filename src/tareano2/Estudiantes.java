@@ -65,7 +65,9 @@ public class Estudiantes {
 
     @Override
     public String toString() {
-        return  "carnet=" + carnet + ", nombre=" + nombre + ", nota=" + nota ;
+        return   "\ncarnet=" + carnet 
+                + "\n nombre=" + nombre 
+                + "\n nota=" + nota ;
     }
     
     public void LeerNombres(Estudiantes[] estudiante){
@@ -111,25 +113,6 @@ public class Estudiantes {
         
     }
     
-    public void EliminarEstudiante(Estudiantes[] estudiante,int carent,int c){
-        int pos =-1;
-        int op=c; 
-        for (int i = 0 ;i<op; i++){                                                     //pos = posicion de lo encantro 
-            if(this.getCarnet()==carnet){                                      //busqueda en posiciones para poder inmprimir posicion
-                System.out.println("Registro encontrado!");
-                pos=i;
-            }
-        }
-        if(pos==-1){
-                System.out.println("No hay Registro");
-        }
-        for (int i = op; i < 1; i++) {
-            estudiante[i] = estudiante[i+1];
-        }                                                                      // la posicion por los datos anteriro (reinscripcion y eliminacion de un espacio
-        System.out.println("Registro eliminado!");
-        op--;
-        
-    }
     
     /**
      *

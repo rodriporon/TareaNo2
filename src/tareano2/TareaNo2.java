@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class TareaNo2 {
     
-    public static Estudiantes [] estudiante = new Estudiantes [3];
+    public static Estudiantes [] estudiante = new Estudiantes [11];
     public static String nombre;
     public static int carnet;
     public static int nota;
@@ -20,16 +20,24 @@ public class TareaNo2 {
         Scanner sc = new Scanner(System.in);
         int opcion;
         do {
+            System.out.println("-----------------------------");
             System.out.println("Ingrese una opción");
             System.out.println("1. Ingresar datos");
             System.out.println("2. Modificar datos");
             System.out.println("3. Eliminar datos");
-            System.out.println("4. Salir");
+            System.out.println("4. Listado de Estudiantes");
+            System.out.println("5. Salir");
             opcion = sc.nextInt();
             switch (opcion) {
                 case 1:
                     System.out.println("INGRESAR DATOS");
-                    Ingresar();
+                    if(cuan<=10){
+                         Ingresar();
+                    }else{
+                        System.out.println("Espacio agotado");
+                    }
+                       
+                    
                     break;
                 case 2:
                     System.out.println("MODIFICAR DATOS");
@@ -40,35 +48,32 @@ public class TareaNo2 {
                     Eliminar();
                     break;
                 case 4:
-                    System.out.println("Adios :D");
+                    System.out.println("LISTADO");
+                    Listado();
+                case 5:
+                   
                     break;
                 default:
                     System.out.println("Ingrese una opción valida");;
             }
-        } while (opcion != 4);
+        } while (opcion != 5);
         
     }
     
     public static void Ingresar(){
         Scanner cd = new Scanner(System.in);
-        Scanner sc = new Scanner(System.in);
-        
-        
         Estudiantes reco_estudiante = new Estudiantes();
-        
-        for (int i = 0; i < 2; i++) {
-            System.out.print("Ingrese el nombre del estudiante: ");
-            nombre = cd.nextLine();
-            System.out.print("Ingrese el carnet: ");
-            carnet = sc.nextInt();
-            System.out.print("Ingrese la nota: ");
-            nota = sc.nextInt();
+         
+        System.out.print("Ingrese el nombre del estudiante: ");
+        nombre = cd.nextLine();
+        System.out.print("Ingrese el carnet: ");
+        carnet = Integer.parseInt(cd.nextLine());
+        System.out.print("Ingrese la nota: ");
+        nota = Integer.parseInt(cd.nextLine());
             
-            estudiante[i] = new Estudiantes(nombre,carnet,nota);
-            cuan++;
-        }
+        estudiante[cuan] = new Estudiantes(nombre,carnet,nota);
+        cuan++;
         //reco_estudiante.LeerNombres(estudiante);
-        
     }
     public static void Modificar(){
         Scanner num = new Scanner(System.in);
@@ -95,19 +100,36 @@ public class TareaNo2 {
     
     public static void Eliminar(){
         Scanner num = new Scanner(System.in);
-        
-        int verify_carnet;
+        int verify_carnet,encontrado;
         int posicion = 0;
         Estudiantes eliminar_estudiante = new Estudiantes();
         System.out.print("Ingrese el carnet a eliminar: ");
         verify_carnet = num.nextInt();
-        eliminar_estudiante.EliminarEstudiante(estudiante,verify_carnet,cuan);
+        encontrado=buscarAlumno(verify_carnet);
+        for (int i = encontrado; i < cuan; i++) {
+            estudiante[i] = estudiante[i+1];
+        }                                                                      // la posicion por los datos anteriro (reinscripcion y eliminacion de un espacio
+        System.out.println("Registro eliminado!"); 
+        cuan--;
     }
-    /*public static void Ver(){    Solo queria saver que datos gurdavas
-
-        for (int i=0;i<cuan;i++){
+    private static int buscarAlumno(int carnet) {
+        int an =-1;
+        for (int i = 0 ;i<cuan; i++){                                                     //pos = posicion de lo encantro 
+            if(estudiante[i].getCarnet()==carnet){                                      //busqueda en posiciones para poder inmprimir posicion
+                System.out.println("Registro encontrado!");
+                an=i;
+            }
+        }
+        if(an==-1){
+                System.out.println("No hay Registro");
+        }
+        return an;
+    }
+    private static void Listado() {
+       for (int i=0;i<cuan;i++){
+           System.out.println("-----------------------------");
             System.out.println(estudiante[i].toString());
         }
-    }*/
+    }
 
 }
