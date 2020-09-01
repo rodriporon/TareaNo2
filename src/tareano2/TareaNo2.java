@@ -31,7 +31,7 @@ public class TareaNo2 {
             switch (opcion) {
                 case 1:
                     System.out.println("INGRESAR DATOS");
-                    if(cuan<=10){
+                    if(cuan<10){
                          Ingresar();
                     }else{
                         System.out.println("Espacio agotado");
@@ -84,7 +84,7 @@ public class TareaNo2 {
         System.out.print("Ingrese el carnet del estudiante: ");
         verify_carnet =Integer.parseInt(num.nextLine());
         quien = reco_carne.BuscarEstudiante(estudiante, verify_carnet,cuan);
-        
+        if (quien != -1) {
         String nombre= null;
         int nota1 = 0;
         System.out.println("-------------------------");
@@ -94,7 +94,9 @@ public class TareaNo2 {
         System.out.println("Nueva Nota: ");
         nota1= Integer.parseInt(num.nextLine());
         estudiante[quien].setNombre(nombre);
-        estudiante[quien].setNota(nota1);           
+        estudiante[quien].setNota(nota1);      
+        }
+             
     }
     
     public static void Eliminar(){
@@ -104,12 +106,16 @@ public class TareaNo2 {
         Estudiantes eliminar_estudiante = new Estudiantes();
         System.out.print("Ingrese el carnet a eliminar: ");
         verify_carnet = num.nextInt();
-        encontrado=buscarAlumno(verify_carnet);
-        for (int i = encontrado; i < cuan; i++) {
+        encontrado = eliminar_estudiante.BuscarEstudiante(estudiante, verify_carnet,cuan);
+        //encontrado=buscarAlumno(verify_carnet);
+        if (encontrado != -1) {
+            for (int i = encontrado; i < cuan; i++) {
             estudiante[i] = estudiante[i+1];
         }                                                                      // la posicion por los datos anteriro (reinscripcion y eliminacion de un espacio
         System.out.println("Registro eliminado"); 
         cuan--;
+        }
+
     }
     private static int buscarAlumno(int carnet) {
         int an =-1;

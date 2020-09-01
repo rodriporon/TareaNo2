@@ -99,7 +99,7 @@ public class Estudiantes {
     }
     
     public int BuscarEstudiante(Estudiantes[] estudiante, int carnet,int c){
-       int pos =0;
+       int pos =-1;
         for (int i = 0 ;i<c; i++){                                                      
             if(estudiante[i].getCarnet()==carnet){                                      //busqueda en posiciones para poder inmprimir posicion
                 System.out.println("Registro encontrado!");
